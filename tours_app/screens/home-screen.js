@@ -1,12 +1,22 @@
 import {View, Text, StyleSheet, Button} from "react-native"
-import { useNavigation } from "@react-navigation/native"
+import { useEffect, useState } from "react"
 import EventList from "../components/events/event-list"
 
 const HomeScreen = () => {
-    const navigation = useNavigation()
+    const [data, setData] = useState([])
+    useEffect(()=> {
+        fetchData()
+    }, [])
+
+    const fetchData = async() => {
+        const response = await fetch('http://localhost:8000/api/storyteller_app/')
+        const data = await response.json()
+        setData(data)
+
+    }
     return (
         <View style={styles.screen}>
-            <EventList />
+            <EventList data={data} />
         </View>
     )
 }
