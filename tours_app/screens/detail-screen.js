@@ -11,7 +11,7 @@ const DetailScreen = () => {
 
     useLayoutEffect(()=> {
         navigation.setOptions({
-            headerTitle: "new title",
+            headerTitle: name,
             headerLeft: () => (
                 <HeaderBackButton
                     tintColor="white"
@@ -24,8 +24,8 @@ const DetailScreen = () => {
     return (
         <View style={styles.screen}>
             <Text style={{fontSize: 20}}>This is the Event Detail Screen for {eventId}</Text>
-            <Text style={{fontSize: 20}}>{name}</Text>
-            <Text style={{fontSize: 20}}>{description}</Text>
+            <Text style={{fontSize: 14}}>{name}</Text>
+            <Text style={{fontSize: 14}}>{description}</Text>
         </View>
     )
 }

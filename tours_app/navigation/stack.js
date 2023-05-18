@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/home-screen';
 import DetailScreen from '../screens/detail-screen';
+import NewEventScreen from '../screens/new-event-screen';
 import { navOptions } from './options';
 import { useNavigation } from '@react-navigation/native';
 import ProfilesScreen from '../screens/profiles/profiles-screen';
@@ -17,6 +18,7 @@ export const HomeStack = () => {
         >
             <Stack.Screen name="Home" component={HomeTabs} />
             <Stack.Screen name="Event" component={DetailScreen} />
+            <Stack.Screen name="New Event" component={NewEventScreen} />
         </Stack.Navigator>
     );
 }

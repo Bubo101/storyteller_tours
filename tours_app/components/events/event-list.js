@@ -4,7 +4,7 @@ import EventItem from "./event-item"
 
 
 
-const EventList = ({data}) => {
+const EventList = ({data, onRefresh}) => {
     const renderItem = ({item}) => {
         return <EventItem id={item.id} name={item.name} description={item.description} qrCode={item.qr_code}/>
     }
@@ -17,7 +17,7 @@ const EventList = ({data}) => {
                 refreshControl={
                     <RefreshControl
                     refreshing={false}
-                    onRefresh={()=> console.log('refreshing')}
+                    onRefresh={onRefresh}
                     />
                 }
             />
