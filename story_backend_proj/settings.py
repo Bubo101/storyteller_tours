@@ -32,10 +32,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "rest_framework",
-    "Tours",
-    "Users",
-    "MediaApp",
     "storyteller_app", 
+    "_MediaAPP",
+    "_ToursAPP",
+    "_UsersAPP",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
