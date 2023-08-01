@@ -7,35 +7,35 @@ class SubStopSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class StopSerializer(serializers.ModelSerializer):
-    sub_stop = SubStopSerializer(many=True)
+    sub_stop = SubStopSerializer(many=True, required=False)
 
     class Meta:
         model = Stop
         fields = '__all__'
 
-    def create(self, validated_data):
-        sub_stop_data = validated_data.pop('sub_stop')
-        stop = Stop.objects.create(**validated_data)
-        for sub_stop_item in sub_stop_data:
-            SubStop.objects.create(stop=stop, **sub_stop_item)
-        return stop
+    # def create(self, validated_data):
+    #     sub_stop_data = validated_data.pop('sub_stop')
+    #     stop = Stop.objects.create(**validated_data)
+    #     for sub_stop_item in sub_stop_data:
+    #         SubStop.objects.create(stop=stop, **sub_stop_item)
+    #     return stop
 
 class TourSerializer(serializers.ModelSerializer):
-    stops = StopSerializer(many=True)
+    stops = StopSerializer(many=True, required=False)
 
     class Meta:
         model = Tour
         fields = '__all__'
 
-    def create(self, validated_data):
-        stops_data = validated_data.pop('stops')
-        tour = Tour.objects.create(**validated_data)
-        for stop_data in stops_data:
-            sub_stops_data = stop_data.pop('sub_stop')
-            stop = Stop.objects.create(tour=tour, **stop_data)
-            for sub_stop_data in sub_stops_data:
-                SubStop.objects.create(stop=stop, **sub_stop_data)
-        return tour
+    # def create(self, validated_data):
+    #     stops_data = validated_data.pop('stops')
+    #     tour = Tour.objects.create(**validated_data)
+    #     for stop_data in stops_data:
+    #         sub_stops_data = stop_data.pop('sub_stop')
+    #         stop = Stop.objects.create(tour=tour, **stop_data)
+    #         for sub_stop_data in sub_stops_data:
+    #             SubStop.objects.create(stop=stop, **sub_stop_data)
+    #     return tour
 
 
 '''
