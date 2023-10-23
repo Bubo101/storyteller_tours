@@ -6,7 +6,8 @@ import EventItem from "./event-item"
 
 const EventList = ({data, onRefresh}) => {
     const renderItem = ({item}) => {
-        return <EventItem id={item.id} name={item.name} description={item.description} qrCode={item.qr_code}/>
+        return <EventItem id={item.id} name={item.title} description={item.description}/>
+        // return <EventItem id={item.id} name={item.name} description={item.description} qrCode={item.qr_code}/>
     }
     return (
         <View>

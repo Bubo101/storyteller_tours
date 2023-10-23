@@ -19,7 +19,7 @@ const HomeScreen = () => {
     // every time refresh changes it will run useEffect again
 
     const fetchData = async() => {
-        const response = await fetch('http://localhost:8000/api/storyteller_app/')
+        const response = await fetch('http://localhost:8000/tours_api/tours/')
         const data = await response.json()
         setData(data)
 
