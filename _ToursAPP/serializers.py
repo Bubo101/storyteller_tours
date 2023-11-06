@@ -1,17 +1,20 @@
 from rest_framework import serializers
 from .models import Tour, Stop, SubStop
+from _MediaAPP.serializers import TourImageSerializer
+
 
 class SubStopSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubStop
-        fields = '__all__'
+        fields = "__all__"
+
 
 class StopSerializer(serializers.ModelSerializer):
     sub_stop = SubStopSerializer(many=True, required=False)
 
     class Meta:
         model = Stop
-        fields = '__all__'
+        fields = "__all__"
 
     # def create(self, validated_data):
     #     sub_stop_data = validated_data.pop('sub_stop')
@@ -20,12 +23,14 @@ class StopSerializer(serializers.ModelSerializer):
     #         SubStop.objects.create(stop=stop, **sub_stop_item)
     #     return stop
 
+
 class TourSerializer(serializers.ModelSerializer):
     stops = StopSerializer(many=True, required=False)
+    images = TourImageSerializer(many=True, required=False)
 
     class Meta:
         model = Tour
-        fields = '__all__'
+        fields = "__all__"
 
     # def create(self, validated_data):
     #     stops_data = validated_data.pop('stops')
@@ -38,7 +43,7 @@ class TourSerializer(serializers.ModelSerializer):
     #     return tour
 
 
-'''
+"""
 Why are the stop serializer and tour serializer more complicated than previous serializers written?
 
 The StopSerializer and TourSerializer are more complicated than the previous serializers because they handle nested relationships and create related objects.
@@ -59,4 +64,4 @@ It creates the Tour instance, then iterates over the stops data, creating the St
 The complexity in these serializers arises from the need to handle nested relationships and properly manage the creation and association of related objects. 
 By using nested serializers and custom create methods, 
 we can handle the serialization and deserialization of nested data structures and maintain the integrity of the relationships between objects.
-'''
+"""
